@@ -7,19 +7,17 @@ function displayResults(responseJson){
     const cases = responseJson.cases;
     const deaths = responseJson.deaths;
     const recovered = responseJson.recovered;
+    $('#wrapper').empty();
     if ('country' in responseJson){
-        $('#wrapper').empty();
-    $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths in ${responseJson.country}</h1><div class="Cases">Cases: ${cases}</div>
+        $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths in ${responseJson.country}</h1>`)
+    }else if (`state` in responseJson){
+        $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths in ${responseJson.state}</h1>`)
+    }else{
+        $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths in the world</h1>`);
+    }
+    $(`#wrapper`).append(`<div class="Cases">Cases: ${cases}</div>
     <div class="Deaths">Deaths: ${deaths}</div>
     <div class="Recovered">Recovered: ${recovered}</div>`)
-    }else{
-        $('.Cases').empty();
-        $('.Cases').append(`Cases: ${cases}`)
-        $('.Deaths').empty();
-        $('.Deaths').append(`Deaths: ${deaths}`)
-        $('.Recovered').empty();
-        $('.Recovered').append(`Recovered: ${recovered}`)
-    }
 }
 
 function getCurrentData(path = '/all?yesterday=false&twoDaysAgo=false&allowNull=true'){
@@ -39,7 +37,7 @@ function getCurrentData(path = '/all?yesterday=false&twoDaysAgo=false&allowNull=
 
 function generateCountryView(){
     $('#wrapper').empty();
-    $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths by country</h1><br><h3>Select the country you want to know covid data for:</h3><form id = "js-form"><select id= "countries">
+    $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths by country</h1><br><h3>Select the country you want to know covid data for:</h3><form id = "country-form"><select id= "countries">
     <option value="840">United States</option>
 	<option value="4">Afghanistan</option>
 	<option value="248">Åland Islands</option>
@@ -292,37 +290,91 @@ function generateCountryView(){
 </select><br><br><input type ='submit'></form>`)
 }
 
+function generateStateView(){
+    $('#wrapper').empty();
+    $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths by state</h1><br><h3>Select the state you want to know covid data for:</h3><form id = "state-form"><select id = "states">
+	<option >Alabama</option>
+	<option >Alaska</option>
+	<option >Arizona</option>
+	<option >Arkansas</option>
+	<option >California</option>
+	<option >Colorado</option>
+	<option >Connecticut</option>
+	<option >Delaware</option>
+	<option >District Of Columbia</option>
+	<option >Florida</option>
+	<option >Georgia</option>
+	<option >Hawaii</option>
+	<option >Idaho</option>
+	<option >Illinois</option>
+	<option >Indiana</option>
+	<option >Iowa</option>
+	<option >Kansas</option>
+	<option >Kentucky</option>
+	<option >Louisiana</option>
+	<option >Maine</option>
+	<option >Maryland</option>
+	<option >Massachusetts</option>
+	<option >Michigan</option>
+	<option >Minnesota</option>
+	<option >Mississippi</option>
+	<option >Missouri</option>
+	<option >Montana</option>
+	<option >Nebraska</option>
+	<option >Nevada</option>
+	<option >New Hampshire</option>
+	<option >New Jersey</option>
+	<option >New Mexico</option>
+	<option >New York</option>
+	<option >North Carolina</option>
+	<option >North Dakota</option>
+	<option >Ohio</option>
+	<option >Oklahoma</option>
+	<option >Oregon</option>
+	<option >Pennsylvania</option>
+	<option >Rhode Island</option>
+	<option >South Carolina</option>
+	<option >South Dakota</option>
+	<option >Tennessee</option>
+	<option >Texas</option>
+	<option >Utah</option>
+	<option >Vermont</option>
+	<option >Virginia</option>
+	<option >Washington</option>
+	<option >West Virginia</option>
+	<option >Wisconsin</option>
+	<option >Wyoming</option>
+</select><input type = "submit"></form>`)
+}
+
 function watchCaseByCountry(){
     $('#Cases-by-country').click(event => {
         generateCountryView();
-    })
+    });
 }
 
-// function watchForm(){
-//     $('form').submit(event => {
-//         event.preventDefault();
-//         console.log('test')
-//         let countryID = $('#countries').val();
-//         let searchTerm = `/countries/${countryID}?yesterday=false&twoDaysAgo=false&strict=true&allowNull=true`
-//         getCurrentData(searchTerm);
-        
-//     });
-// }
+function watchCaseByState(){
+    $('#Cases-by-state').click(event =>{
+        generateStateView();
+    });
+}
 
 function watchForm() {
-    // $('form').submit(event => {
-    //   event.preventDefault();
-    //   console.log('test')
-    // });
-    $(`#wrapper`).on('submit','#js-form',function(event){
+    $(`#wrapper`).on('submit','#country-form',function(event){
         event.preventDefault();
-        console.log('test')
-        let countryID = $('#countries').val();
-        let searchTerm = `/countries/${countryID}?yesterday=false&twoDaysAgo=false&strict=true&allowNull=true`
-        getCurrentData(searchTerm);
+        const countryID = $('#countries').val();
+        const path = `/countries/${countryID}?yesterday=false&twoDaysAgo=false&strict=true&allowNull=true`
+        getCurrentData(path);
+    });
+    $('#wrapper').on('submit','#state-form',function(event){
+        event.preventDefault();
+        const state = $(`#states`).val();
+        const path = `/states/${state}?yesterday=false&allowNull=true`
+        getCurrentData(path);
     });
   }
 
 $(getCurrentData())
 $(watchCaseByCountry())
 $(watchForm())
+$(watchCaseByState())
