@@ -344,7 +344,12 @@ function generateStateView(){
 	<option >West Virginia</option>
 	<option >Wisconsin</option>
 	<option >Wyoming</option>
-</select><input type = "submit"></form>`)
+</select><br><br><input type = "submit"></form>`)
+}
+
+function generateStaySafePage(){
+    $('#wrapper').empty();
+    $('#wrapper').append(`<h1 class="display-title">Keeping yourself and others safe from Covid 19</h1><ul><li>Wear a mask when you go outside, work, or any other public place</li><li>Stay at least 6 feet apart from others when in a public space. If that is not possible, try waiting for the next elevator, bus, etc instead of overcrowding.</li><li>Avoid touching your face, especially your eyes and nose</li><li>Be sure to wash your hands with soap and water after touching a surface others may have touched, especially if you are going to be eating or touching your face shortly after. Use hand sanitizer if washing your hands with soap and water is not easily accessible</li><li>Self quarantine if you are feeling ill, display covid symtom, or have tested positive for Covid 19</li><li>Avoid large gatherings</li><li>Disinfect surfaces that are touched a lot, especially when in a work or public place</li><li>Ask to work or learn remotely if your employer or school allows it</li><li>Stay informed on Covid 19</li><ul>`);
 }
 
 function watchCaseByCountry(){
@@ -356,6 +361,12 @@ function watchCaseByCountry(){
 function watchCaseByState(){
     $('#Cases-by-state').click(event =>{
         generateStateView();
+    });
+}
+
+function watchKeepYourselfSafe(){
+    $('#Keep-yourself-safe').click(event =>{
+        generateStaySafePage();
     });
 }
 
@@ -372,9 +383,10 @@ function watchForm() {
         const path = `/states/${state}?yesterday=false&allowNull=true`
         getCurrentData(path);
     });
-  }
+}
 
 $(getCurrentData())
 $(watchCaseByCountry())
 $(watchForm())
 $(watchCaseByState())
+$(watchKeepYourselfSafe())
