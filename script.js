@@ -401,6 +401,12 @@ function generateSelfTestPage(){
     <label for="no">No</label><br><br><input type = "submit"></form>`)
 }
 
+function watchCaseByWorld(){
+    $('#Cases-in-the-world').click(event => {
+        getCurrentData();
+    });
+}
+
 function watchCaseByCountry(){
     $('#Cases-by-country').click(event => {
         generateCountryView();
@@ -515,3 +521,4 @@ $(watchForm())
 $(watchCaseByState())
 $(watchKeepYourselfSafe())
 $(watchSelfTest())
+$(watchCaseByWorld())
