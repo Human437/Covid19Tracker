@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 const covidInfoSearchUrl = 'https://disease.sh/v3/covid-19';
 
 const countriesAPI = `https://restcountries.eu/rest/v2/all`;
@@ -80,7 +80,7 @@ function getCurrentData(path = '/all?yesterday=false&twoDaysAgo=false&allowNull=
 
 function generateCountryView(countriesResponseJson){
     let html = ""
-    for(i=0;i<countriesResponseJson.length;i++){
+    for(let i=0;i<countriesResponseJson.length;i++){
         html += `<option value = ${countriesResponseJson[i].numericCode}>${countriesResponseJson[i].name}</option>`
     }
     $('#wrapper').empty();
@@ -212,7 +212,7 @@ function displayQuestion(){
     let symptoms = "";
     if (`symptoms` in covidSelfChecker.questions[questionNumber]){
         symptoms += `<ul>`
-        for (i = 0; i<covidSelfChecker.questions[questionNumber].symptoms.length; i++){
+        for (let i = 0; i<covidSelfChecker.questions[questionNumber].symptoms.length; i++){
             symptoms += `<li>${covidSelfChecker.questions[questionNumber].symptoms[i]}</li>`
         }
         symptoms += `</ul>`
@@ -234,7 +234,7 @@ function displayQuestion(){
 function displayTestResults(){
     covidSelfChecker.questionNumber = 0;
     let results = "<h1>Covid 19 Self Check Results</h1>";
-    for (i = 0;i<covidSelfChecker.questions.length;i++){
+    for (let i = 0;i<covidSelfChecker.questions.length;i++){
         const question = covidSelfChecker.questions[i];
         results += `<h3>${question.question}<h3><h4>Your answer: ${question.userAnswer}</h4>`
     }
