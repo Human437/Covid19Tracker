@@ -1,0 +1,158 @@
+.topnav {
+  overflow: hidden;
+  background-color: #262626;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+}
+
+.topnav #myLinks {
+  display: none;
+  flex-direction: column;
+}
+
+.topnav p {
+  color: white;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  display: block;
+}
+
+.topnav p.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0px;
+  font-size: 20px;
+}
+
+.active {
+  background-color: #93A3AD;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+}
+
+#Cases-in-the-world{
+    font-size: 20px;
+}
+
+body{
+    background-color: #516373;
+    color: #ecf3f9;
+}
+
+.container h1{
+    font-size: 40px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.stats{
+    text-align: center;
+    font-size: 20px;
+    width: 90%;
+    padding: 3%;
+    background-color:#A3B4BF;
+    margin: 3%;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 10px;
+    border-width: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2 a{
+    color: #ecf3f9;
+}
+#states, #countries,.info-submit{
+    width: 339px;
+}
+
+.info-submit,.box{
+    height: 30px;
+    background-color: #eee;
+    border-radius: 5px;
+    border-color: black;
+    font-size: 15px;
+    color: #1c87c9;
+}
+
+.box {
+    width: 120px;
+    height: 30px;
+    border: 2px solid black;
+}
+
+h1{
+    text-align: center;
+}
+#keep-urself-safe{
+    font-size: 32px;
+}
+#yes,#no,label,input{
+    font-size: 15px;
+}
+
+@media all and  (min-width: 1035px){
+    .topnav p:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .topnav p {
+        float: left;
+        font-size: 20px;
+        padding: 14px;
+    }
+    .topnav p.icon {
+        float: right;
+      }
+    .link{
+        margin: 0px;
+        padding: 0px;
+    }
+    #icon{
+        display: none;
+    }
+    .topnav #myLinks {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: row;
+    }
+    h1.display-title, #keep-urself-safe{
+        font-size: 70px;
+    }
+    .stats{
+        font-size: 30px;
+        padding: 2%;
+    }
+    li{
+        font-size: 30px;
+    }
+    #wrapper{
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+    h3{
+        font-size: 35px;
+    }
+    #states, #countries,.info-submit{
+        width: 724px;
+    }
+    
+    .info-submit,.box{
+        height: 50px;
+        border-radius: 7px;
+        font-size: 25px;
+    }
+    #yes,#no,label,input{
+        font-size: 25px;
+    }
+    
+}
