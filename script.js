@@ -189,6 +189,7 @@ function watchCaseByWorld(){
 function watchCaseByCountry(){
     $('#Cases-by-country').click(event => {
         getCountries();
+        //Collapses the burger menu when a item is selected
         if (window.outerWidth < 1035){
             openCloseBurger();
         };
@@ -306,6 +307,7 @@ function watchForm() {
     });
 }
 
+//Changes the display type to flex if the window width is greater than 1035px
 $(window).on('resize', function(){
     var win = $(this); //this = window
     var x = document.getElementById("myLinks");
