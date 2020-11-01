@@ -1,39 +1,39 @@
 .topnav {
-  overflow: hidden;
-  background-color: #262626;
-  position: relative;
-  padding: 0px;
-  margin: 0px;
+    overflow: hidden;
+    background-color: #262626;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
 }
 
 .topnav #myLinks {
-  display: none;
-  flex-direction: column;
+    display: none;
+    flex-direction: column;
 }
 
 .topnav p {
-  color: white;
-  padding: 10px 16px;
-  text-decoration: none;
-  font-size: 15px;
-  display: block;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
 }
 
 .topnav p.icon {
-  background: black;
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 0px;
-  font-size: 20px;
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0px;
+    font-size: 20px;
 }
 
 .active {
-  background-color: #93A3AD;
-  color: white;
-  padding: 0px;
-  margin: 0px;
+    background-color: #93A3AD;
+    color: white;
+    padding: 0px;
+    margin: 0px;
 }
 
 #Cases-in-the-world{
