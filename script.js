@@ -56,6 +56,7 @@ function openCloseBurger() {
   }
 
 function displayResults(responseJson){
+    // Adds commas to large numbers to make it more readable
     const cases = Number(responseJson.cases).toLocaleString('en');
     const deaths = Number(responseJson.deaths).toLocaleString('en');
     const recovered = Number(responseJson.recovered).toLocaleString('en');
