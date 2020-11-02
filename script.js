@@ -327,4 +327,4 @@ const documentReady = function documentReady(){
     $(watchCaseByWorld());
 };
 
-documentReady();
+$(documentReady());
