@@ -44,7 +44,7 @@ const covidSelfChecker = {
             userAnswer: ""
         }
     ]
-}
+};
 
 function openCloseBurger() {
     var x = document.getElementById("myLinks");
@@ -61,19 +61,19 @@ function displayResults(responseJson){
     const recovered = Number(responseJson.recovered).toLocaleString('en');
     const html = `<div class="Cases item stats">Cases: ${cases}</div>
     <div class="Deaths item stats">Deaths: ${deaths}</div>
-    <div class="Recovered item stats">Recovered: ${recovered}</div>`
+    <div class="Recovered item stats">Recovered: ${recovered}</div>`;
     $('#wrapper').empty();
     if ('country' in responseJson){
-        $('#wrapper').append(`<h1 class="display-title item"">Covid 19 Cases and Deaths in ${responseJson.country}</h1>${html}`)
+        $('#wrapper').append(`<h1 class="display-title item">Covid 19 Cases and Deaths in ${responseJson.country}</h1>${html}`);
     }else if (`state` in responseJson){
-        $('#wrapper').append(`<h1 class="display-title item"">Covid 19 Cases and Deaths in ${responseJson.state}</h1>${html}`)
+        $('#wrapper').append(`<h1 class="display-title item">Covid 19 Cases and Deaths in ${responseJson.state}</h1>${html}`);
     }else{
-        $('#wrapper').append(`<h1 class="display-title item"">Covid 19 Cases and Deaths in the World</h1> ${html}`);
+        $('#wrapper').append(`<h1 class="display-title item">Covid 19 Cases and Deaths in the World</h1> ${html}`);
     }
 }
 
 function getCurrentData(path = '/all?yesterday=false&twoDaysAgo=false&allowNull=true'){
-    const url = `${covidInfoSearchUrl}${path}`
+    const url = `${covidInfoSearchUrl}${path}`;
     fetch(url)
     .then(response => {
       if (response.ok) {
@@ -90,10 +90,10 @@ function getCurrentData(path = '/all?yesterday=false&twoDaysAgo=false&allowNull=
 function generateCountryView(countriesResponseJson){
     let html = ""
     for(let i=0;i<countriesResponseJson.length;i++){
-        html += `<option value = ${countriesResponseJson[i].numericCode}>${countriesResponseJson[i].name}</option>`
+        html += `<option value = ${countriesResponseJson[i].numericCode}>${countriesResponseJson[i].name}</option>`;
     }
     $('#wrapper').empty();
-    $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths by country</h1><br><h3>Select the country you want to know covid data for:</h3><form id = "country-form"><select id= "countries" class = "box">${html}</select><br><br><input type ='submit' class = "info-submit"></form>`)
+    $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths by country</h1><br><h3>Select the country you want to know covid data for:</h3><form id = "country-form"><select id= "countries" class = "box">${html}</select><br><br><input type ='submit' class = "info-submit"></form>`);
 }
 
 function getCountries(){
@@ -164,12 +164,12 @@ function generateStateView(){
 	<option >West Virginia</option>
 	<option >Wisconsin</option>
 	<option >Wyoming</option>
-</select><br><br><input type = "submit" class = "info-submit"></form>`)
+</select><br><br><input type = "submit" class = "info-submit"></form>`);
 }
 
 function generateStaySafePage(){
     $('#wrapper').empty();
-    $('#wrapper').append(`<h1 class="display-title" id = "keep-urself-safe">Keeping yourself and others safe from Covid 19</h1><ul><li>Wear a mask when you go outside, work, or any other public place</li><li>Stay at least 6 feet apart from others when in a public space. If that is not possible, try waiting for the next elevator, bus, etc instead of overcrowding.</li><li>Avoid touching your face, especially your eyes and nose</li><li>Be sure to wash your hands with soap and water after touching a surface others may have touched, especially if you are going to be eating or touching your face shortly after. Use hand sanitizer if washing your hands with soap and water is not easily accessible</li><li>Self quarantine if you are feeling ill, display covid symtom, or have tested positive for Covid 19</li><li>Avoid large gatherings</li><li>Disinfect surfaces that are touched a lot, especially when in a work or public place</li><li>Ask to work or learn remotely if your employer or school allows it</li><li>Stay informed on Covid 19</li><ul>`);
+    $('#wrapper').append(`<h1 class="display-title" id = "keep-urself-safe">Keeping yourself and others safe from Covid 19</h1><ul><li>Wear a mask when you go outside, work, or any other public place</li><li>Stay at least 6 feet apart from others when in a public space. If that is not possible, try waiting for the next elevator, bus, etc instead of overcrowding.</li><li>Avoid touching your face, especially your eyes and nose</li><li>Be sure to wash your hands with soap and water after touching a surface others may have touched, especially if you are going to be eating or touching your face shortly after. Use hand sanitizer if washing your hands with soap and water is not easily accessible</li><li>Self quarantine if you are feeling ill, display covid symtom, or have tested positive for Covid 19</li><li>Avoid large gatherings</li><li>Disinfect surfaces that are touched a lot, especially when in a work or public place</li><li>Ask to work or learn remotely if your employer or school allows it</li><li>Stay informed on Covid 19</li></ul>`);
 }
 
 function generateSelfTestPage(){
@@ -177,7 +177,7 @@ function generateSelfTestPage(){
     $(`#wrapper`).append(`<h2>This is a Covid 19 self checking tool to help you make a better decision about whether or not you need to get tested for Covid 19. This tool is not meant to be a diagnosis or treatment of diseases or condition of any kind. Do <strong>NOT</strong> use this tool for diagnostic purposes. Please note that information regarding Covid 19 is constantly changing. For the most up to date information regarding Covid 19 please visit <a href = "https://www.cdc.gov/coronavirus/2019-ncov/index.html">the CDC website</a>.</h2><h3>Do you agree to the conditions above?</h3><br><form id = "self-checker"><input type="radio" id="yes" name="accept" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="accept" value="no" required>
-    <label for="no">No</label><br><br><input type = "submit"></form>`)
+    <label for="no">No</label><br><br><input type = "submit"></form>`);
 }
 
 function watchCaseByWorld(){
@@ -225,7 +225,7 @@ function watchSelfTest(){
 
 function stopSelfChecker(){
     $('#wrapper').empty();
-    $('#wrapper').append('<h1>This is a Covid 19 self checking tool to help you make a better decision about whether or not you need to get tested for Covid 19. This tool is not meant to be a diagnosis or treatment of diseases or condition of any kind. Do <strong>NOT</strong> use this tool for diagnostic purposes.</h1><h2>You did not accept the terms above. You may not use this Covid 19 self checking tool.</h2>')
+    $('#wrapper').append('<h2>This is a Covid 19 self checking tool to help you make a better decision about whether or not you need to get tested for Covid 19. This tool is not meant to be a diagnosis or treatment of diseases or condition of any kind. Do <strong>NOT</strong> use this tool for diagnostic purposes.</h2><h3>You did not accept the terms above. You may not use this Covid 19 self checking tool.</h3>');
 }
 
 function displayQuestion(){
@@ -233,37 +233,37 @@ function displayQuestion(){
     const question = `<h2>${covidSelfChecker.questions[questionNumber].question}</h2>`;
     let symptoms = "";
     if (`symptoms` in covidSelfChecker.questions[questionNumber]){
-        symptoms += `<ul>`
+        symptoms += `<ul>`;
         for (let i = 0; i<covidSelfChecker.questions[questionNumber].symptoms.length; i++){
-            symptoms += `<li>${covidSelfChecker.questions[questionNumber].symptoms[i]}</li>`
+            symptoms += `<li>${covidSelfChecker.questions[questionNumber].symptoms[i]}</li>`;
         }
-        symptoms += `</ul>`
+        symptoms += `</ul>`;
     }else{
         symptoms = "";
     }
-    let submit = `<input type = "submit" value = "Next">`
+    let submit = `<input type = "submit" value = "Next">`;
     if (questionNumber == covidSelfChecker.questions.length-1){
-        submit = `<input type = "submit" value = "Get Results">`
+        submit = `<input type = "submit" value = "Get Results">`;
     }
     const answers = `<br><form id = "user-input"><input type="radio" id="yes" name="accept" value="yes">
     <label for="yes">Yes</label><br>
     <input type="radio" id="no" name="accept" value="no" required>
     <label for="no">No</label><br><br>${submit}</form>`;
     $('#wrapper').empty();
-    $('#wrapper').append(`<h1>Covid 19 Self Checking Tool</h1>${question}${symptoms}${answers}`)
+    $('#wrapper').append(`<h1>Covid 19 Self Checking Tool</h1>${question}${symptoms}${answers}`);
 }
 
 function displayTestResults(){
     covidSelfChecker.questionNumber = 0;
     let results = "<h1>Covid 19 Self Check Results</h1>";
     if (covidSelfChecker.getTested == true){
-        results += "<h2>Based on the answers you provided, it is recommened that you get tested. If you exibit life threatening symtoms such as bluish lips or face, call 911. View your responses below.</h2>"
+        results += "<h2>Based on the answers you provided, it is recommened that you get tested. If you exibit life threatening symtoms such as bluish lips or face, call 911. View your responses below.</h2>";
     }else{
-        results += "<h2>Based on the answers you provided, it does not seem like you need to get tested right now. However, you should continue to monitor for symptoms and self quarantine if you feel that you may have been exposed. View your responses below.</h2>"
+        results += "<h2>Based on the answers you provided, it does not seem like you need to get tested right now. However, you should continue to monitor for symptoms and self quarantine if you feel that you may have been exposed. View your responses below.</h2>";
     }
     for (let i = 0;i<covidSelfChecker.questions.length;i++){
         const question = covidSelfChecker.questions[i];
-        results += `<h3>${question.question}</h3><h3>Your answer: ${question.userAnswer}</h3>`
+        results += `<h3>${question.question}</h3><h3>Your answer: ${question.userAnswer}</h3>`;
     }
     $('#wrapper').empty();
     $('#wrapper').append(results);
@@ -273,13 +273,13 @@ function watchForm() {
     $(`#wrapper`).on('submit','#country-form',function(event){
         event.preventDefault();
         const countryID = $('#countries').val();
-        const path = `/countries/${countryID}?yesterday=false&twoDaysAgo=false&strict=true&allowNull=true`
+        const path = `/countries/${countryID}?yesterday=false&twoDaysAgo=false&strict=true&allowNull=true`;
         getCurrentData(path);
     });
     $('#wrapper').on('submit','#state-form',function(event){
         event.preventDefault();
         const state = $(`#states`).val();
-        const path = `/states/${state}?yesterday=false&allowNull=true`
+        const path = `/states/${state}?yesterday=false&allowNull=true`;
         getCurrentData(path);
     });
     $('#wrapper').on('submit','#self-checker',function(event){
@@ -316,10 +316,14 @@ $(window).on('resize', function(){
     }
 });
 
-$(getCurrentData())
-$(watchCaseByCountry())
-$(watchForm())
-$(watchCaseByState())
-$(watchKeepYourselfSafe())
-$(watchSelfTest())
-$(watchCaseByWorld())
+function documentReady(){
+    $(getCurrentData());
+    $(watchCaseByCountry());
+    $(watchForm());
+    $(watchCaseByState());
+    $(watchKeepYourselfSafe());
+    $(watchSelfTest());
+    $(watchCaseByWorld());
+};
+
+documentReady();
