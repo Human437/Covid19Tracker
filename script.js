@@ -46,7 +46,7 @@ const covidSelfChecker = {
     ]
 };
 
-function openCloseBurger() {
+const openCloseBurger = function openCloseBurger() {
     var x = document.getElementById("myLinks");
     if (x.style.display == "flex") {
       x.style.display = "none";
@@ -55,7 +55,7 @@ function openCloseBurger() {
     }
   }
 
-function displayResults(responseJson){
+const displayResults = function displayResults(responseJson){
     // Adds commas to large numbers to make it more readable
     const cases = Number(responseJson.cases).toLocaleString('en');
     const deaths = Number(responseJson.deaths).toLocaleString('en');
@@ -73,7 +73,7 @@ function displayResults(responseJson){
     }
 }
 
-function getCurrentData(path = '/all?yesterday=false&twoDaysAgo=false&allowNull=true'){
+const getCurrentData = function getCurrentData(path = '/all?yesterday=false&twoDaysAgo=false&allowNull=true'){
     const url = `${covidInfoSearchUrl}${path}`;
     fetch(url)
     .then(response => {
@@ -88,7 +88,7 @@ function getCurrentData(path = '/all?yesterday=false&twoDaysAgo=false&allowNull=
     });
 }
 
-function generateCountryView(countriesResponseJson){
+const generateCountryView = function generateCountryView(countriesResponseJson){
     let html = ""
     for(let i=0;i<countriesResponseJson.length;i++){
         html += `<option value = ${countriesResponseJson[i].numericCode}>${countriesResponseJson[i].name}</option>`;
@@ -97,7 +97,7 @@ function generateCountryView(countriesResponseJson){
     $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths by country</h1><br><h3>Select the country you want to know covid data for:</h3><form id = "country-form"><select id= "countries" class = "box">${html}</select><br><br><input type ='submit' class = "info-submit"></form>`);
 }
 
-function getCountries(){
+const getCountries = function getCountries(){
     fetch(countriesAPI)
     .then(response => {
       if (response.ok) {
@@ -111,7 +111,7 @@ function getCountries(){
     });
 }
 
-function generateStateView(){
+const generateStateView = function generateStateView(){
     $('#wrapper').empty();
     $('#wrapper').append(`<h1 class="display-title">Covid 19 Cases and Deaths by state</h1><br><h3>Select the state you want to know covid data for:</h3><form id = "state-form"><select id = "states" class = "box">
 	<option >Alabama</option>
@@ -168,12 +168,12 @@ function generateStateView(){
 </select><br><br><input type = "submit" class = "info-submit"></form>`);
 }
 
-function generateStaySafePage(){
+const generateStaySafePage = function generateStaySafePage(){
     $('#wrapper').empty();
     $('#wrapper').append(`<h1 class="display-title" id = "keep-urself-safe">Keeping yourself and others safe from Covid 19</h1><ul><li>Wear a mask when you go outside, work, or any other public place</li><li>Stay at least 6 feet apart from others when in a public space. If that is not possible, try waiting for the next elevator, bus, etc instead of overcrowding.</li><li>Avoid touching your face, especially your eyes and nose</li><li>Be sure to wash your hands with soap and water after touching a surface others may have touched, especially if you are going to be eating or touching your face shortly after. Use hand sanitizer if washing your hands with soap and water is not easily accessible</li><li>Self quarantine if you are feeling ill, display covid symtom, or have tested positive for Covid 19</li><li>Avoid large gatherings</li><li>Disinfect surfaces that are touched a lot, especially when in a work or public place</li><li>Ask to work or learn remotely if your employer or school allows it</li><li>Stay informed on Covid 19</li></ul>`);
 }
 
-function generateSelfTestPage(){
+const generateSelfTestPage = function generateSelfTestPage(){
     $('#wrapper').empty();
     $(`#wrapper`).append(`<h2>This is a Covid 19 self checking tool to help you make a better decision about whether or not you need to get tested for Covid 19. This tool is not meant to be a diagnosis or treatment of diseases or condition of any kind. Do <strong>NOT</strong> use this tool for diagnostic purposes. Please note that information regarding Covid 19 is constantly changing. For the most up to date information regarding Covid 19 please visit <a href = "https://www.cdc.gov/coronavirus/2019-ncov/index.html">the CDC website</a>.</h2><h3>Do you agree to the conditions above?</h3><br><form id = "self-checker"><input type="radio" id="yes" name="accept" value="yes">
     <label for="yes">Yes</label><br>
@@ -181,13 +181,13 @@ function generateSelfTestPage(){
     <label for="no">No</label><br><br><input type = "submit"></form>`);
 }
 
-function watchCaseByWorld(){
+const watchCaseByWorld = function watchCaseByWorld(){
     $('#Cases-in-the-world').click(event => {
         getCurrentData();
     });
 }
 
-function watchCaseByCountry(){
+const watchCaseByCountry = function watchCaseByCountry(){
     $('#Cases-by-country').click(event => {
         getCountries();
         //Collapses the burger menu when a item is selected
@@ -197,7 +197,7 @@ function watchCaseByCountry(){
     });
 }
 
-function watchCaseByState(){
+const watchCaseByState = function watchCaseByState(){
     $('#Cases-by-state').click(event =>{
         generateStateView();
         if (window.outerWidth < 1035){
@@ -206,7 +206,7 @@ function watchCaseByState(){
     });
 }
 
-function watchKeepYourselfSafe(){
+const watchKeepYourselfSafe = function watchKeepYourselfSafe(){
     $('#Keep-yourself-safe').click(event =>{
         generateStaySafePage();
         if (window.outerWidth < 1035){
@@ -215,7 +215,7 @@ function watchKeepYourselfSafe(){
     });
 }
 
-function watchSelfTest(){
+const watchSelfTest = function watchSelfTest(){
     $('#Self-test').click(event =>{
         generateSelfTestPage();
         if (window.outerWidth < 1035){
@@ -224,12 +224,12 @@ function watchSelfTest(){
     });
 }
 
-function stopSelfChecker(){
+const stopSelfChecker = function stopSelfChecker(){
     $('#wrapper').empty();
     $('#wrapper').append('<h2>This is a Covid 19 self checking tool to help you make a better decision about whether or not you need to get tested for Covid 19. This tool is not meant to be a diagnosis or treatment of diseases or condition of any kind. Do <strong>NOT</strong> use this tool for diagnostic purposes.</h2><h3>You did not accept the terms above. You may not use this Covid 19 self checking tool.</h3>');
 }
 
-function displayQuestion(){
+const displayQuestion = function displayQuestion(){
     const questionNumber = covidSelfChecker.questionNumber;
     const question = `<h2>${covidSelfChecker.questions[questionNumber].question}</h2>`;
     let symptoms = "";
@@ -254,7 +254,7 @@ function displayQuestion(){
     $('#wrapper').append(`<h1>Covid 19 Self Checking Tool</h1>${question}${symptoms}${answers}`);
 }
 
-function displayTestResults(){
+const displayTestResults = function displayTestResults(){
     covidSelfChecker.questionNumber = 0;
     let results = "<h1>Covid 19 Self Check Results</h1>";
     if (covidSelfChecker.getTested == true){
@@ -270,7 +270,7 @@ function displayTestResults(){
     $('#wrapper').append(results);
 }
 
-function watchForm() {
+const watchForm = function watchForm() {
     $(`#wrapper`).on('submit','#country-form',function(event){
         event.preventDefault();
         const countryID = $('#countries').val();
@@ -317,7 +317,7 @@ $(window).on('resize', function(){
     }
 });
 
-function documentReady(){
+const documentReady = function documentReady(){
     $(getCurrentData());
     $(watchCaseByCountry());
     $(watchForm());
