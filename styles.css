@@ -70,8 +70,11 @@ body{
 h2 a{
     color: #ecf3f9;
 }
+form{
+    text-align: center;
+}
 #states, #countries,.info-submit{
-    width: 339px;
+    width: 90%;
 }
 
 .info-submit,.box{
@@ -84,7 +87,7 @@ h2 a{
 }
 
 .box {
-    width: 120px;
+    width: 90%;
     height: 30px;
     border: 2px solid black;
 }
@@ -153,6 +156,9 @@ h1{
     }
     #yes,#no,label,input{
         font-size: 25px;
+    }
+    .link:hover{
+        cursor: pointer;
     }
     
 }
