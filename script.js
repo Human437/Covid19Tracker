@@ -318,13 +318,13 @@ $(window).on('resize', function(){
 });
 
 const documentReady = function documentReady(){
-    $(getCurrentData());
-    $(watchCaseByCountry());
-    $(watchForm());
-    $(watchCaseByState());
-    $(watchKeepYourselfSafe());
-    $(watchSelfTest());
-    $(watchCaseByWorld());
+    getCurrentData();
+    watchCaseByCountry();
+    watchForm();
+    watchCaseByState();
+    watchKeepYourselfSafe();
+    watchSelfTest();
+    watchCaseByWorld();
 };
 
 $(documentReady());
